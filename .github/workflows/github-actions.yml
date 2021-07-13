@@ -1,11 +1,26 @@
-name: GitHub Actions Demo
-on:
-  - push
+name: Linter
+
+# Run this workflow every time a new commit pushed to your repository
+on: push
+
 jobs:
-  build:
+  # Set the job key. The key is displayed as the job name
+  # when a job name is not provided
+  make-lint:
+    # Name the Job
+    name: Runs linter
+    # Set the type of machine to run on
     runs-on: ubuntu-latest
+
     steps:
-      - name: install
-        run: npm ci
-      - name: lint
-        run: npx eslint .
+      # Checks out a copy of your repository on the ubuntu-latest machine
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # installing dependencies
+      - name: install dependencies
+        run: make install
+
+      # Runs the Super-Linter action
+      - name: Run Linter
+        run: make lint
