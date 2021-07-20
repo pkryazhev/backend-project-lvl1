@@ -6,3 +6,5 @@
 ![build status](https://github.com/pkryazhev/backend-project-lvl1/actions/workflows/github-actions.yml/badge.svg)
 
 [![asciicast](https://asciinema.org/a/JEFZaqU61J5jRT5NGtxYOKR1Z.svg)](https://asciinema.org/a/JEFZaqU61J5jRT5NGtxYOKR1Z)
+
+[![asciicast](https://asciinema.org/a/2Lzgg3IUhzJ5jqDUW70zwqM9J.svg)](https://asciinema.org/a/2Lzgg3IUhzJ5jqDUW70zwqM9J)
