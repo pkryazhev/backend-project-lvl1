@@ -2,7 +2,6 @@ import * as baseActions from '../index.js';
 
 const generateOperation = () => {
   const number = Math.floor(Math.random() * 3);
-  console.log(number);
   switch (number) {
     case 0:
       return '+';
