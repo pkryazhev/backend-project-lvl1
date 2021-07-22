@@ -21,7 +21,7 @@ const printLose = (userAnswer, wrightAnswer, userName) => {
   console.log(`Let's try again, ${userName}!`);
 };
 
-const generateNumber = () => { return Math.floor(Math.random() * 100); }
+const generateNumber = () => Math.floor(Math.random() * 100);
 
 export {
   getAnswer, helloAndSaveUser, printWin, printLose, roundQuantity, generateNumber,
