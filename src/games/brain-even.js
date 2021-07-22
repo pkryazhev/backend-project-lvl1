@@ -4,7 +4,7 @@ const brainEven = () => {
   const userName = baseActions.helloAndSaveUser();
   let count = 0;
   while (count < baseActions.roundQuantity) {
-    const number = baseActions.generateNumber();
+    const number = baseActions.generateNumber(100);
     const wrightAnswer = number % 2 === 0 ? 'yes' : 'no';
     console.log(`Question: ${number}`);
     const userAnswer = baseActions.getAnswer();

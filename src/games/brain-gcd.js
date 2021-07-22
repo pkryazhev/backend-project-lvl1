@@ -15,8 +15,8 @@ const brainGcd = () => {
   const userName = baseActions.helloAndSaveUser();
   let count = 0;
   while (count < baseActions.roundQuantity) {
-    const number1 = baseActions.generateNumber();
-    const number2 = baseActions.generateNumber();
+    const number1 = baseActions.generateNumber(100);
+    const number2 = baseActions.generateNumber(100);
     const wrightAnswer = calculate(number1, number2);
     console.log(`Question: ${number1} ${number2}`);
     const userAnswer = baseActions.getAnswer();
