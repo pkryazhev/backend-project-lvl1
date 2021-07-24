@@ -1,4 +1,4 @@
-import * as baseActions from '../index.js';
+import * as gameActions from '../index.js';
 
 const generateOperation = () => {
   const number = Math.floor(Math.random() * 3);
@@ -17,35 +17,32 @@ const generateOperation = () => {
 const calculate = (num1, num2, operation) => {
   switch (operation) {
     case '+':
-      return num1 + num2;
+      return String(num1 + num2);
     case '-':
-      return num1 - num2;
+      return String(num1 - num2);
     case '*':
-      return num1 * num2;
+      return String(num1 * num2);
     default:
       return null;
   }
 };
 
-const brainCalc = () => {
-  const userName = baseActions.helloAndSaveUser();
-  let count = 0;
-  while (count < baseActions.roundQuantity) {
-    const number1 = baseActions.generateNumber(100);
-    const number2 = baseActions.generateNumber(100);
+const generateGameData = () => {
+  const wrightAnswers = [];
+  const questionString = [];
+  const result = [questionString, wrightAnswers];
+  for (let i = 1; i <= gameActions.roundQuantity; i += 1) {
+    const number1 = gameActions.generateNumber(100);
+    const number2 = gameActions.generateNumber(100);
     const operation = generateOperation();
-    const wrightAnswer = calculate(number1, number2, operation);
-    console.log(`Question: ${number1} ${operation} ${number2}`);
-    const userAnswer = baseActions.getAnswer();
-    if (wrightAnswer === +userAnswer) {
-      console.log('Correct!');
-      count += 1;
-    } else {
-      baseActions.printLose(userAnswer, wrightAnswer, userName);
-      return;
-    }
+    wrightAnswers.push(calculate(number1, number2, operation));
+    questionString.push(`${number1} ${operation} ${number2}`);
   }
-  baseActions.printWin(userName);
+  return result;
+};
+
+const brainCalc = () => {
+  gameActions.gameProcess(generateGameData());
 };
 
 export default brainCalc;

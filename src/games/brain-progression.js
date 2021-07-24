@@ -1,35 +1,28 @@
-import * as baseActions from '../index.js';
+import * as gameActions from '../index.js';
 
-const generateProgression = () => {
-  const firstNumber = baseActions.generateNumber(15);
-  const key = baseActions.generateNumber(10);
-  const position = baseActions.generateNumber(10);
-  let resultString = '';
-  for (let i = 0; i <= 9; i += 1) {
-    const number = firstNumber + i * key;
-    if (i === position) {
-      resultString += '.. ';
-    } else resultString += `${number} `;
+const generateGameData = () => {
+  const wrightAnswers = [];
+  const questionString = [];
+  const result = [questionString, wrightAnswers];
+  for (let i = 1; i <= gameActions.roundQuantity; i += 1) {
+    const firstNumber = gameActions.generateNumber(15);
+    const key = gameActions.generateNumber(10);
+    const position = gameActions.generateNumber(10);
+    let resultString = '';
+    for (let j = 0; j <= 9; j += 1) {
+      const number = firstNumber + j * key;
+      if (j === position) {
+        resultString += '.. ';
+      } else resultString += `${number} `;
+    }
+    questionString.push(resultString);
+    wrightAnswers.push(String(firstNumber + key * position));
   }
-  console.log(`Question: ${resultString}`);
-  return firstNumber + key * position;
+  return result;
 };
 
 const brainProgression = () => {
-  const userName = baseActions.helloAndSaveUser();
-  let count = 0;
-  while (count < baseActions.roundQuantity) {
-    const wrightAnswer = generateProgression();
-    const userAnswer = baseActions.getAnswer();
-    if (wrightAnswer === +userAnswer) {
-      console.log('Correct!');
-      count += 1;
-    } else {
-      baseActions.printLose(userAnswer, wrightAnswer, userName);
-      return;
-    }
-  }
-  baseActions.printWin(userName);
+  gameActions.gameProcess(generateGameData());
 };
 
 export default brainProgression;

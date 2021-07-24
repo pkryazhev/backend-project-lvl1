@@ -1,4 +1,4 @@
-import * as baseActions from '../index.js';
+import * as gameActions from '../index.js';
 
 const calculate = (num1, num2) => {
   let result = 1;
@@ -8,27 +8,24 @@ const calculate = (num1, num2) => {
       result = i;
     }
   }
+  return String(result);
+};
+
+const generateGameData = () => {
+  const wrightAnswers = [];
+  const questionString = [];
+  const result = [questionString, wrightAnswers];
+  for (let i = 1; i <= gameActions.roundQuantity; i += 1) {
+    const number1 = gameActions.generateNumber(100);
+    const number2 = gameActions.generateNumber(100);
+    wrightAnswers.push(calculate(number1, number2));
+    questionString.push(`${number1} ${number2}`);
+  }
   return result;
 };
 
 const brainGcd = () => {
-  const userName = baseActions.helloAndSaveUser();
-  let count = 0;
-  while (count < baseActions.roundQuantity) {
-    const number1 = baseActions.generateNumber(100);
-    const number2 = baseActions.generateNumber(100);
-    const wrightAnswer = calculate(number1, number2);
-    console.log(`Question: ${number1} ${number2}`);
-    const userAnswer = baseActions.getAnswer();
-    if (wrightAnswer === +userAnswer) {
-      console.log('Correct!');
-      count += 1;
-    } else {
-      baseActions.printLose(userAnswer, wrightAnswer, userName);
-      return;
-    }
-  }
-  baseActions.printWin(userName);
+  gameActions.gameProcess(generateGameData());
 };
 
 export default brainGcd;

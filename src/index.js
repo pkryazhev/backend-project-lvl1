@@ -23,6 +23,31 @@ const printLose = (userAnswer, wrightAnswer, userName) => {
 
 const generateNumber = (max) => Math.floor(Math.random() * max);
 
+const printQuestion = (str) => {
+  console.log(`Question: ${str}`);
+};
+
+const printCorrect = () => {
+  console.log('Correct!');
+};
+
+const gameProcess = (gameData) => {
+  const userName = helloAndSaveUser();
+  const [questionString, wrightAnswers] = gameData;
+  for (let i = 0; i < roundQuantity; i += 1) {
+    printQuestion(questionString[i]);
+    const userAnswer = getAnswer();
+    if (wrightAnswers[i] === userAnswer) {
+      printCorrect();
+    } else {
+      printLose(userAnswer, wrightAnswers[i], userName);
+      return;
+    }
+  }
+  printWin(userName);
+};
+
 export {
   getAnswer, helloAndSaveUser, printWin, printLose, roundQuantity, generateNumber,
+  printQuestion, printCorrect, gameProcess,
 };
