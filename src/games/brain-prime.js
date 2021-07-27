@@ -16,7 +16,7 @@ const generateGameData = () => {
   const questions = [];
   const result = [questions, rightAnswers];
   for (let i = 0; i < roundQuantity; i += 1) {
-    const number = generateNumber(1, 100);
+    const number = generateNumber(2, 100);
     rightAnswers.push(isPrime(number));
     questions.push(String(number));
   }
