@@ -1,13 +1,14 @@
-import * as gameActions from '../index.js';
+import generateNumber from '../utils.js';
+import gameProcess, { roundQuantity } from '../index.js';
 
 const generateGameData = () => {
-  const wrightAnswers = [];
-  const questionString = [];
-  const result = [questionString, wrightAnswers];
-  for (let i = 1; i <= gameActions.roundQuantity; i += 1) {
-    const firstNumber = gameActions.generateNumber(15);
-    const key = gameActions.generateNumber(10);
-    const position = gameActions.generateNumber(10);
+  const rightAnswers = [];
+  const questions = [];
+  const result = [questions, rightAnswers];
+  for (let i = 0; i < roundQuantity; i += 1) {
+    const firstNumber = generateNumber(1, 15);
+    const key = generateNumber(2, 10);
+    const position = generateNumber(2, 9);
     let resultString = '';
     for (let j = 0; j <= 9; j += 1) {
       const number = firstNumber + j * key;
@@ -15,14 +16,14 @@ const generateGameData = () => {
         resultString += '.. ';
       } else resultString += `${number} `;
     }
-    questionString.push(resultString);
-    wrightAnswers.push(String(firstNumber + key * position));
+    questions.push(resultString);
+    rightAnswers.push(String(firstNumber + key * position));
   }
   return result;
 };
 
 const brainProgression = () => {
-  gameActions.gameProcess(generateGameData());
+  gameProcess(generateGameData());
 };
 
 export default brainProgression;

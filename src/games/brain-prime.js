@@ -1,4 +1,5 @@
-import * as gameActions from '../index.js';
+import generateNumber from '../utils.js';
+import gameProcess, { roundQuantity } from '../index.js';
 
 const isPrime = (number) => {
   let divider = 1;
@@ -11,19 +12,19 @@ const isPrime = (number) => {
 };
 
 const generateGameData = () => {
-  const wrightAnswers = [];
-  const questionString = [];
-  const result = [questionString, wrightAnswers];
-  for (let i = 1; i <= gameActions.roundQuantity; i += 1) {
-    const number = gameActions.generateNumber(100);
-    wrightAnswers.push(isPrime(number));
-    questionString.push(String(number));
+  const rightAnswers = [];
+  const questions = [];
+  const result = [questions, rightAnswers];
+  for (let i = 0; i < roundQuantity; i += 1) {
+    const number = generateNumber(1, 100);
+    rightAnswers.push(isPrime(number));
+    questions.push(String(number));
   }
   return result;
 };
 
 const brainPrime = () => {
-  gameActions.gameProcess(generateGameData());
+  gameProcess(generateGameData());
 };
 
 export default brainPrime;

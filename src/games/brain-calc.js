@@ -1,4 +1,5 @@
-import * as gameActions from '../index.js';
+import generateNumber from '../utils.js';
+import gameProcess, { roundQuantity } from '../index.js';
 
 const generateOperation = () => {
   const number = Math.floor(Math.random() * 3);
@@ -28,21 +29,21 @@ const calculate = (num1, num2, operation) => {
 };
 
 const generateGameData = () => {
-  const wrightAnswers = [];
-  const questionString = [];
-  const result = [questionString, wrightAnswers];
-  for (let i = 1; i <= gameActions.roundQuantity; i += 1) {
-    const number1 = gameActions.generateNumber(100);
-    const number2 = gameActions.generateNumber(100);
+  const rightAnswers = [];
+  const questions = [];
+  const result = [questions, rightAnswers];
+  for (let i = 0; i < roundQuantity; i += 1) {
+    const number1 = generateNumber(1, 100);
+    const number2 = generateNumber(1, 100);
     const operation = generateOperation();
-    wrightAnswers.push(calculate(number1, number2, operation));
-    questionString.push(`${number1} ${operation} ${number2}`);
+    rightAnswers.push(calculate(number1, number2, operation));
+    questions.push(`${number1} ${operation} ${number2}`);
   }
   return result;
 };
 
 const brainCalc = () => {
-  gameActions.gameProcess(generateGameData());
+  gameProcess(generateGameData());
 };
 
 export default brainCalc;
