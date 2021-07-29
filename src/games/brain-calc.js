@@ -1,5 +1,5 @@
 import generateNumber from '../utils.js';
-import gameProcess, { roundQuantity } from '../index.js';
+import play, { roundQuantity } from '../index.js';
 
 const generateOperation = () => {
   const number = Math.floor(Math.random() * 3);
@@ -29,21 +29,22 @@ const calculate = (num1, num2, operation) => {
 };
 
 const generateGameData = () => {
-  const rightAnswers = [];
-  const questions = [];
-  const result = [questions, rightAnswers];
+  const result = [];
   for (let i = 0; i < roundQuantity; i += 1) {
     const number1 = generateNumber(1, 100);
     const number2 = generateNumber(1, 100);
     const operation = generateOperation();
-    rightAnswers.push(calculate(number1, number2, operation));
-    questions.push(`${number1} ${operation} ${number2}`);
+    const rightAnswer = calculate(number1, number2, operation);
+    const question = `${number1} ${operation} ${number2}`;
+    result.push([rightAnswer, question]);
   }
   return result;
 };
 
+const rule = 'What is the result of the expression?';
+
 const brainCalc = () => {
-  gameProcess(generateGameData());
+  play(generateGameData(), rule);
 };
 
 export default brainCalc;

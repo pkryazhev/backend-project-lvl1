@@ -1,5 +1,5 @@
 import generateNumber from '../utils.js';
-import gameProcess, { roundQuantity } from '../index.js';
+import play, { roundQuantity } from '../index.js';
 
 const isPrime = (number) => {
   let divider = 1;
@@ -12,19 +12,20 @@ const isPrime = (number) => {
 };
 
 const generateGameData = () => {
-  const rightAnswers = [];
-  const questions = [];
-  const result = [questions, rightAnswers];
+  const result = [];
   for (let i = 0; i < roundQuantity; i += 1) {
     const number = generateNumber(2, 100);
-    rightAnswers.push(isPrime(number));
-    questions.push(String(number));
+    const rightAnswer = isPrime(number);
+    const question = String(number);
+    result.push([rightAnswer, question]);
   }
   return result;
 };
 
+const rule = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+
 const brainPrime = () => {
-  gameProcess(generateGameData());
+  play(generateGameData(), rule);
 };
 
 export default brainPrime;

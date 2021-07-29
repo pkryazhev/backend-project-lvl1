@@ -1,5 +1,5 @@
 import generateNumber from '../utils.js';
-import gameProcess, { roundQuantity } from '../index.js';
+import play, { roundQuantity } from '../index.js';
 
 const calculate = (num1, num2) => {
   let result = 1;
@@ -13,20 +13,21 @@ const calculate = (num1, num2) => {
 };
 
 const generateGameData = () => {
-  const rightAnswers = [];
-  const questions = [];
-  const result = [questions, rightAnswers];
+  const result = [];
   for (let i = 0; i < roundQuantity; i += 1) {
     const number1 = generateNumber(1, 100);
     const number2 = generateNumber(1, 100);
-    rightAnswers.push(calculate(number1, number2));
-    questions.push(`${number1} ${number2}`);
+    const rightAnswer = calculate(number1, number2);
+    const question = `${number1} ${number2}`;
+    result.push([rightAnswer, question]);
   }
   return result;
 };
 
+const rule = 'Find the greatest common divisor of given numbers.';
+
 const brainGcd = () => {
-  gameProcess(generateGameData());
+  play(generateGameData(), rule);
 };
 
 export default brainGcd;

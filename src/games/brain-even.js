@@ -1,20 +1,21 @@
 import generateNumber from '../utils.js';
-import gameProcess, { roundQuantity } from '../index.js';
+import play, { roundQuantity } from '../index.js';
 
 const generateGameData = () => {
-  const rightAnswers = [];
-  const questions = [];
-  const result = [questions, rightAnswers];
+  const result = [];
   for (let i = 0; i < roundQuantity; i += 1) {
     const number = generateNumber(1, 100);
-    rightAnswers.push(number % 2 === 0 ? 'yes' : 'no');
-    questions.push(String(number));
+    const rightAnswer = number % 2 === 0 ? 'yes' : 'no';
+    const question = String(number);
+    result.push([rightAnswer, question]);
   }
   return result;
 };
 
+const rule = 'Answer "yes" if the number is even, otherwise answer "no".';
+
 const brainEven = () => {
-  gameProcess(generateGameData());
+  play(generateGameData(), rule);
 };
 
 export default brainEven;
