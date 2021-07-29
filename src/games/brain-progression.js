@@ -14,8 +14,8 @@ const generateGameData = () => {
         resultString += '.. ';
       } else resultString += `${number} `;
     }
-    const rightAnswer = resultString;
-    const question = String(firstNumber + key * position);
+    const question = resultString;
+    const rightAnswer = String(firstNumber + key * position);
     result.push([rightAnswer, question]);
   }
   return result;
