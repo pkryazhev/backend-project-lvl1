@@ -12,7 +12,7 @@ const play = (gameData, rule) => {
     const [rightAnswer, question] = gameData[i];
     console.log(`Question: ${question}`);
     const userAnswer = readlineSync.question('Your answer: ');
-    if (rightAnswer !== userAnswer) {
+    if (rightAnswer.toString() !== userAnswer.toString()) {
       console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${rightAnswer}'.`);
       console.log(`Let's try again, ${userName}!`);
       return;

@@ -1,18 +1,12 @@
 import generateNumber from '../utils.js';
 import play, { roundQuantity } from '../index.js';
 
+const rule = 'What is the result of the expression?';
+
 const generateOperation = () => {
-  const number = Math.floor(Math.random() * 3);
-  switch (number) {
-    case 0:
-      return '+';
-    case 1:
-      return '-';
-    case 2:
-      return '*';
-    default:
-      return '+';
-  }
+  const number = generateNumber(0, 2);
+  const operation = ['+', '-', '*'];
+  return operation[number];
 };
 
 const calculate = (num1, num2, operation) => {
@@ -40,8 +34,6 @@ const generateGameData = () => {
   }
   return result;
 };
-
-const rule = 'What is the result of the expression?';
 
 const brainCalc = () => {
   play(generateGameData(), rule);

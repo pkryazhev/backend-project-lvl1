@@ -1,6 +1,8 @@
 import generateNumber from '../utils.js';
 import play, { roundQuantity } from '../index.js';
 
+const rule = 'Find the greatest common divisor of given numbers.';
+
 const calculate = (num1, num2) => {
   let result = 1;
   const count = num1 < num2 ? num1 : num2;
@@ -9,7 +11,7 @@ const calculate = (num1, num2) => {
       result = i;
     }
   }
-  return String(result);
+  return result;
 };
 
 const generateGameData = () => {
@@ -23,8 +25,6 @@ const generateGameData = () => {
   }
   return result;
 };
-
-const rule = 'Find the greatest common divisor of given numbers.';
 
 const brainGcd = () => {
   play(generateGameData(), rule);
