@@ -10,7 +10,7 @@ const isPrime = (number) => {
       divider = i;
     }
   }
-  return divider === 1
+  return divider === 1;
 };
 
 const generateGameData = () => {
