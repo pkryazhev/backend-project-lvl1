@@ -10,14 +10,14 @@ const isPrime = (number) => {
       divider = i;
     }
   }
-  return divider > 1 ? 'no' : 'yes';
+  return divider === 1
 };
 
 const generateGameData = () => {
   const result = [];
   for (let i = 0; i < roundQuantity; i += 1) {
     const number = generateNumber(2, 100);
-    const rightAnswer = isPrime(number);
+    const rightAnswer = isPrime(number) ? 'yes' : 'no';
     const question = String(number);
     result.push([rightAnswer, question]);
   }
