@@ -4,8 +4,8 @@ import play, { roundQuantity } from '../index.js';
 const rule = 'What is the result of the expression?';
 
 const generateOperation = () => {
-  const number = generateNumber(0, 2);
   const operation = ['+', '-', '*'];
+  const number = generateNumber(0, operation.length - 1);
   return operation[number];
 };
 
