@@ -18,8 +18,7 @@ const generateGameData = () => {
   for (let i = 0; i < roundQuantity; i += 1) {
     const number = generateNumber(2, 100);
     const rightAnswer = isPrime(number) ? 'yes' : 'no';
-    const question = String(number);
-    result.push([rightAnswer, question]);
+    result.push([rightAnswer, number]);
   }
   return result;
 };

@@ -17,10 +17,10 @@ const calculate = (num1, num2) => {
 const generateGameData = () => {
   const result = [];
   for (let i = 0; i < roundQuantity; i += 1) {
-    const number1 = generateNumber(1, 100);
-    const number2 = generateNumber(1, 100);
-    const rightAnswer = calculate(number1, number2);
-    const question = `${number1} ${number2}`;
+    const num1 = generateNumber(1, 100);
+    const num2 = generateNumber(1, 100);
+    const rightAnswer = calculate(num1, num2);
+    const question = `${num1} ${num2}`;
     result.push([rightAnswer, question]);
   }
   return result;

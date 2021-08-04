@@ -12,11 +12,11 @@ const generateOperation = () => {
 const calculate = (num1, num2, operation) => {
   switch (operation) {
     case '+':
-      return String(num1 + num2);
+      return num1 + num2;
     case '-':
-      return String(num1 - num2);
+      return num1 - num2;
     case '*':
-      return String(num1 * num2);
+      return num1 * num2;
     default:
       return null;
   }
@@ -25,11 +25,11 @@ const calculate = (num1, num2, operation) => {
 const generateGameData = () => {
   const result = [];
   for (let i = 0; i < roundQuantity; i += 1) {
-    const number1 = generateNumber(1, 100);
-    const number2 = generateNumber(1, 100);
+    const num1 = generateNumber(1, 100);
+    const num2 = generateNumber(1, 100);
     const operation = generateOperation();
-    const rightAnswer = calculate(number1, number2, operation);
-    const question = `${number1} ${operation} ${number2}`;
+    const rightAnswer = calculate(num1, num2, operation);
+    const question = `${num1} ${operation} ${num2}`;
     result.push([rightAnswer, question]);
   }
   return result;
