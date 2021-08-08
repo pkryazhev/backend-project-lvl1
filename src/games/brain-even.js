@@ -8,9 +8,9 @@ const isEven = (number) => number % 2 === 0;
 const generateGameData = () => {
   const result = [];
   for (let i = 0; i < roundQuantity; i += 1) {
-    const number = generateNumber(1, 100);
-    const rightAnswer = isEven(number) ? 'yes' : 'no';
-    result.push([rightAnswer, number]);
+    const question = generateNumber(1, 100);
+    const rightAnswer = isEven(question) ? 'yes' : 'no';
+    result.push([rightAnswer, question]);
   }
   return result;
 };

@@ -4,13 +4,12 @@ import play, { roundQuantity } from '../index.js';
 const rule = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 const isPrime = (number) => {
-  let divider = 1;
-  for (let i = 1; i < number; i += 1) {
+  for (let i = 2; i < number; i += 1) {
     if (number % i === 0) {
-      divider = i;
+      return false;
     }
   }
-  return divider === 1;
+  return true;
 };
 
 const generateGameData = () => {

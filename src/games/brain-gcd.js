@@ -21,7 +21,7 @@ const generateGameData = () => {
     const num2 = generateNumber(1, 100);
     const rightAnswer = calculate(num1, num2);
     const question = `${num1} ${num2}`;
-    result.push([rightAnswer, question]);
+    result.push([String(rightAnswer), question]);
   }
   return result;
 };

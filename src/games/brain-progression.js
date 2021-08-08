@@ -11,7 +11,7 @@ const createProgression = (first, key, hiddenIndex) => {
       result.push('..');
     } else result.push(number);
   }
-  const rightAnswer = first + key * hiddenIndex;
+  const rightAnswer = String(first + key * hiddenIndex);
   return [rightAnswer, result.join(' ')];
 };
 

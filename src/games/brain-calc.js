@@ -30,7 +30,7 @@ const generateGameData = () => {
     const operation = generateOperation();
     const rightAnswer = calculate(num1, num2, operation);
     const question = `${num1} ${operation} ${num2}`;
-    result.push([rightAnswer, question]);
+    result.push([String(rightAnswer), question]);
   }
   return result;
 };
